@@ -1,0 +1,3226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monesh D </title>
+    <link rel="icon" href="yin-yang.png" type="image/png">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- AOS (Animate On Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00f3ff;
+            --primary-dark: #00bcd4;
+            --secondary: #bc13fe;
+            --dark: #050510;
+            --darker: #020205;
+            --light: #e0f7fa;
+            --lighter: #ffffff;
+            --gray: #1a1a2e;
+            --lighter-gray: #2a2a40;
+            --card-bg: rgba(20, 20, 35, 0.7);
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0d0;
+            --accent: #ff0055;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--dark);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* White Shade / Ambient Light Effect */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -20%;
+            left: -10%;
+            width: 50%;
+            height: 50%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.03) 0%, rgba(0, 0, 0, 0) 70%);
+            z-index: 9999;
+            pointer-events: none;
+            filter: blur(100px);
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: -20%;
+            right: -10%;
+            width: 50%;
+            height: 50%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.03) 0%, rgba(0, 0, 0, 0) 70%);
+            z-index: 9999;
+            pointer-events: none;
+            filter: blur(100px);
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--darker);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark);
+        }
+
+        section {
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-title {
+            position: relative;
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: var(--text-primary);
+        }
+
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Glass Navigation Bar */
+        .glass-nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1000px;
+            padding: 10px 30px;
+            background: rgba(10, 10, 15, 0.4);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+            display: flex;
+            justify-content: center;
+            /* Center links since logo is gone */
+            align-items: center;
+            z-index: 10000;
+            transition: all 0.3s ease;
+        }
+
+        /* Hide navbar on very small screens for better UX or keep as is */
+        @media (max-width: 576px) {
+            .glass-nav {
+                width: 95%;
+                padding: 10px 15px;
+                top: 10px;
+                overflow-x: auto;
+                justify-content: flex-start;
+                gap: 15px;
+                /* Add gap for scrolling */
+            }
+
+            .nav-logo {
+                display: none;
+            }
+
+            /* Hide scrollbar for cleaner look */
+            .glass-nav::-webkit-scrollbar {
+                display: none;
+            }
+        }
+
+        /* Highlight Role Style (Replaced Typed.js) */
+        .highlight-role {
+            color: var(--primary);
+            font-family: 'Courier New', monospace;
+            background: rgba(0, 243, 255, 0.1);
+            padding: 2px 10px;
+            border-radius: 4px;
+            border: 1px solid var(--primary);
+            text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+            margin-left: 5px;
+            display: inline-block;
+            transform: skew(-10deg);
+            transition: all 0.3s ease;
+        }
+
+        .highlight-role:hover {
+            background: var(--primary);
+            color: #000;
+            box-shadow: 0 0 20px var(--primary);
+            transform: skew(-10deg) scale(1.05);
+        }
+
+        .nav-logo {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            font-family: 'Courier New', monospace;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 10px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-item a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+            /* Prevent breaking on small screens */
+        }
+
+        .nav-item a:hover {
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-2px);
+        }
+
+        .nav-item a.active {
+            color: #000000;
+            background: var(--primary);
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
+            font-weight: 600;
+        }
+
+        /* Icon visibility handling */
+        .nav-item i {
+            font-size: 1rem;
+        }
+
+        .nav-item span {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .nav-item span {
+                display: none;
+            }
+
+            .nav-item i {
+                font-size: 1.2rem;
+                margin: 0;
+            }
+
+            .nav-item a {
+                padding: 8px 12px;
+            }
+        }
+
+        /* Terminal-Style Home Section */
+        #home {
+            padding: 0;
+            height: 100vh;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: transparent;
+            /* Changed from gradient to transparent */
+        }
+
+        .terminal-container {
+            width: 90%;
+            max-width: 900px;
+            height: min(500px, 80vh);
+            max-height: calc(100vh - 120px);
+            background: rgba(10, 10, 16, 0.95);
+            border-radius: 12px;
+            box-shadow: 0 0 40px rgba(0, 243, 255, 0.15), 0 0 100px rgba(0, 0, 0, 0.8);
+            overflow: hidden;
+            position: relative;
+            z-index: 2;
+            border: 1px solid rgba(0, 243, 255, 0.3);
+            backdrop-filter: blur(5px);
+        }
+
+        .terminal-header {
+            background: rgba(20, 20, 30, 0.95);
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(0, 243, 255, 0.15);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .terminal-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .terminal-button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .terminal-button.close {
+            background: #ff5f56;
+        }
+
+        .terminal-button.minimize {
+            background: #ffbd2e;
+        }
+
+        .terminal-button.maximize {
+            background: #27ca3f;
+        }
+
+        .terminal-title {
+            flex: 1;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-family: 'Courier New', monospace;
+        }
+
+        .terminal-body {
+            padding: 25px;
+            max-height: calc(100% - 45px);
+            overflow-y: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+            line-height: 1.5;
+            background: transparent;
+        }
+
+        .terminal-line {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .terminal-prompt {
+            color: var(--primary);
+            margin-right: 10px;
+            white-space: nowrap;
+        }
+
+        .terminal-command {
+            color: var(--text-primary);
+        }
+
+        .terminal-output {
+            color: var(--text-secondary);
+            margin-left: 20px;
+        }
+
+        .terminal-cursor {
+            display: inline-block;
+            width: 8px;
+            height: 18px;
+            background: var(--primary);
+            margin-left: 5px;
+            animation: blink 1s infinite;
+            vertical-align: middle;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .terminal-command.highlight {
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        .terminal-name {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .terminal-role {
+            color: var(--secondary);
+        }
+
+        .terminal-link {
+            color: var(--primary);
+            text-decoration: none;
+            border-bottom: 1px dotted var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .terminal-link:hover {
+            color: var(--secondary);
+            border-bottom: 1px solid var(--secondary);
+        }
+
+        .terminal-cta {
+            margin-top: 30px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .terminal-btn {
+            display: inline-block;
+            background: var(--primary);
+            color: #000000;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid var(--primary);
+            font-family: 'Courier New', monospace;
+        }
+
+        .terminal-btn.glow-btn {
+            background: rgba(0, 243, 255, 0.1);
+            /* Lighter background */
+            box-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+            animation: btnPulse 3s infinite;
+            /* Slower animation */
+            border-width: 2px;
+            /* Thicker border to stand out without flash */
+            color: #ffffff;
+        }
+
+        @keyframes btnPulse {
+            0% {
+                box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
+            }
+
+            50% {
+                box-shadow: 0 0 25px rgba(0, 243, 255, 0.5);
+            }
+
+            100% {
+                box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
+            }
+        }
+
+        .terminal-btn:hover {
+            background: transparent;
+            color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 255, 136, 0.3);
+        }
+
+        .terminal-btn.outline {
+            background: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+
+        .terminal-btn.outline:hover {
+            background: var(--primary);
+            color: #000000;
+        }
+
+        /* Matrix Background Effect */
+        .matrix-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
+            pointer-events: none;
+            opacity: 0.1;
+        }
+
+        .matrix-char {
+            position: absolute;
+            color: var(--primary);
+            font-family: 'Courier New', monospace;
+            font-size: 1.2rem;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100%);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+
+        /* About Section */
+        #about {
+            background-color: var(--darker);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        .about-text h3 span {
+            color: var(--primary);
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .skill-tag {
+            background: var(--card-bg);
+            color: var(--text-primary);
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            border-left: 3px solid var(--primary);
+        }
+
+        /* Enhanced Services Section with Sliding Cards */
+        #services {
+            background-color: var(--dark);
+        }
+
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: rgba(17, 17, 17, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+            height: 380px;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .service-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 255, 136, 0.15);
+            z-index: 10;
+            border-color: var(--primary);
+        }
+
+        .service-card-front {
+            padding: 30px;
+            transition: all 0.4s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .service-card-back {
+            display: none;
+            /* Hide back content, used for modal */
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 255, 136, 0.2);
+            cursor: pointer;
+        }
+
+        .service-card:hover .service-card-front {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+        }
+
+        .service-summary {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .service-features {
+            list-style-type: none;
+            margin-top: 15px;
+        }
+
+        .service-features li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+            color: var(--text-secondary);
+        }
+
+        .service-features li:before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .service-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .service-tech-tag {
+            background: rgba(0, 255, 136, 0.1);
+            color: var(--primary);
+            padding: 3px 10px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+        }
+
+        .service-hover-indicator {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            color: var(--primary);
+            font-size: 0.8rem;
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-hover-indicator {
+            opacity: 1;
+            transform: translateX(5px);
+        }
+
+        /* Enhanced Projects Section with Sliding Cards */
+        #projects {
+            background-color: var(--darker);
+        }
+
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+            height: 380px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 255, 136, 0.2);
+        }
+
+        .project-card-front {
+            transition: all 0.4s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card-back {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--card-bg);
+            padding: 25px;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+            overflow-y: auto;
+            border-top: 3px solid var(--primary);
+        }
+
+        .project-card:hover .project-card-back {
+            transform: translateY(0);
+        }
+
+        .project-card:hover .project-card-front {
+            opacity: 0;
+        }
+
+        .project-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .project-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .project-img img {
+            transform: scale(1.1);
+        }
+
+        .project-content {
+            padding: 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .project-summary {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .project-tech-tag {
+            background: rgba(0, 255, 136, 0.1);
+            color: var(--primary);
+            padding: 3px 12px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--text-primary);
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .project-link.demo {
+            background: var(--primary);
+            color: #000000;
+        }
+
+        .project-link.code {
+            background: var(--gray);
+            color: var(--text-primary);
+        }
+
+        .project-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 255, 136, 0.3);
+        }
+
+        .project-link.demo:hover {
+            background: var(--primary-dark);
+        }
+
+        .project-link.code:hover {
+            background: var(--lighter-gray);
+        }
+
+        .project-details {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .project-features {
+            list-style-type: none;
+            margin-bottom: 20px;
+        }
+
+        .project-features li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px;
+            color: var(--text-secondary);
+        }
+
+        .project-features li:before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+
+        .project-hover-indicator {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            color: var(--primary);
+            font-size: 0.8rem;
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover .project-hover-indicator {
+            opacity: 1;
+            transform: translateX(5px);
+        }
+
+        /* Enhanced Experience Section with Sliding Cards */
+        #experience {
+            background-color: var(--dark);
+        }
+
+        .experience-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .experience-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+            height: 280px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .experience-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 255, 136, 0.2);
+        }
+
+        .experience-card-front {
+            padding: 25px;
+            transition: all 0.4s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .experience-card-back {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--card-bg);
+            padding: 25px;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+            overflow-y: auto;
+            border-top: 3px solid var(--primary);
+        }
+
+        .experience-card:hover .experience-card-back {
+            transform: translateY(0);
+        }
+
+        .experience-card:hover .experience-card-front {
+            opacity: 0;
+        }
+
+        .experience-date {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+
+        .experience-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+        }
+
+        .experience-company {
+            color: var(--secondary);
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .experience-summary {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .experience-details {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .experience-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .experience-tech-tag {
+            background: rgba(0, 255, 136, 0.1);
+            color: var(--primary);
+            padding: 3px 10px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+        }
+
+        .experience-hover-indicator {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            color: var(--primary);
+            font-size: 0.8rem;
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+
+        .experience-card:hover .experience-hover-indicator {
+            opacity: 1;
+            transform: translateX(5px);
+        }
+
+        /* Contact Section */
+        #contact {
+            background-color: var(--darker);
+        }
+
+        .contact-container {
+            display: flex;
+            gap: 50px;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .contact-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateX(10px);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 255, 136, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--primary);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover .contact-icon {
+            background: var(--primary);
+            color: #000000;
+            transform: scale(1.1);
+        }
+
+        .contact-text h4 {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            margin-bottom: 5px;
+        }
+
+        .contact-text p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--card-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-primary);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            color: #000000;
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 255, 136, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--darker);
+            padding: 30px 0;
+            text-align: center;
+            border-top: 1px solid var(--gray);
+        }
+
+        .footer-text {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .footer-text a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-text a:hover {
+            color: var(--secondary);
+            text-decoration: underline;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+
+            .contact-container {
+                flex-direction: column;
+            }
+
+            .timeline::before {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+
+            .timeline-dot {
+                left: 23px;
+            }
+
+            .timeline-item:nth-child(even) .timeline-dot {
+                left: 23px;
+            }
+
+            .timeline-content::after {
+                left: 18px;
+                right: auto;
+            }
+
+            .timeline-item:nth-child(even) .timeline-content::after {
+                left: 18px;
+            }
+
+            .timeline-date {
+                display: inline-block;
+                background: var(--card-bg);
+                padding: 3px 10px;
+                border-radius: 20px;
+                margin-bottom: 10px;
+                border: 1px solid var(--primary);
+            }
+
+            .timeline-item {
+                padding-left: 80px;
+            }
+
+            .timeline-dot {
+                top: 25px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .nav-circles {
+                right: 15px;
+            }
+
+            .terminal-container {
+                height: 450px;
+            }
+
+            .terminal-body {
+                padding: 20px;
+                font-size: 0.9rem;
+            }
+
+            .terminal-cta {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .terminal-btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .services-container,
+            .projects-container,
+            .experience-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .terminal-container {
+                height: 400px;
+            }
+
+            .terminal-body {
+                padding: 15px;
+                font-size: 0.85rem;
+            }
+
+            .terminal-btn {
+                font-size: 0.85rem;
+                padding: 8px 15px;
+            }
+
+            .service-card,
+            .project-card,
+            .experience-card {
+                height: 300px;
+            }
+        }
+
+        /* Text Badges for Skills */
+        .skill-text-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            margin: 5px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            border-radius: 4px;
+            color: var(--text-primary);
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-text-badge:hover {
+            background: rgba(0, 243, 255, 0.1);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 243, 255, 0.15);
+        }
+
+        /* Floating Background Icons */
+        .floating-icons-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            /* Ensure this is below the terminal (which is z-index 2) but above the gradient bg */
+            overflow: hidden;
+            opacity: 0.15;
+            /* Increased opacity slightly for visibility */
+        }
+
+        .float-icon {
+            position: absolute;
+            animation: float-around 20s infinite linear;
+        }
+
+        @keyframes float-around {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            25% {
+                transform: translate(100px, 50px) rotate(90deg);
+            }
+
+            50% {
+                transform: translate(50px, 100px) rotate(180deg);
+            }
+
+            75% {
+                transform: translate(-50px, 50px) rotate(270deg);
+            }
+
+            100% {
+                transform: translate(0, 0) rotate(360deg);
+            }
+        }
+
+        /* Loader Styles */
+        #loader-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease-out;
+        }
+
+        .loader {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .loader-content {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100px;
+            /* Fixed height to prevent jumps */
+        }
+
+        /* Name Animation Steps */
+        .loader-name {
+            display: flex;
+            font-family: 'Courier New', monospace;
+            font-weight: 700;
+            font-size: 2.5rem;
+            color: var(--primary);
+            position: absolute;
+            animation: showHideName 1.2s forwards;
+            /* 0s to 1.2s */
+        }
+
+        .part-mon {
+            animation: slideInLeft 0.5s ease-out forwards;
+        }
+
+        .part-esh {
+            animation: slideInUp 0.5s ease-out forwards;
+        }
+
+        .part-go {
+            animation: slideInRight 0.5s ease-out forwards;
+        }
+
+        .part-mo {
+            animation: slideInDown 0.5s ease-out forwards;
+        }
+
+        @keyframes showHideName {
+
+            0%,
+            70% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            100% {
+                opacity: 0;
+                transform: scale(0.5);
+                display: none;
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-100px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInDown {
+            from {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Icon Animation Steps */
+        .loader-icon-step {
+            width: 80px;
+            height: 80px;
+            position: absolute;
+            opacity: 0;
+            filter: drop-shadow(0 0 15px rgba(0, 243, 255, 0.5));
+        }
+
+        .icon-spring {
+            animation: showHideIcon 0.8s forwards 1.2s;
+            /* 1.2s to 2.0s */
+        }
+
+        .icon-docker {
+            animation: showHideIcon 0.8s forwards 2.0s;
+            /* 2.0s to 2.8s */
+        }
+
+        .icon-k8s {
+            animation: showIconFinal 0.8s forwards 2.8s;
+            /* 2.8s onwards */
+        }
+
+        @keyframes showHideIcon {
+            0% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+
+            20%,
+            80% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            100% {
+                opacity: 0;
+                transform: scale(1.5);
+            }
+        }
+
+        @keyframes showIconFinal {
+            0% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1.2) rotate(360deg);
+            }
+        }
+    </style>
+    <!-- Small centralized config: edit these values to quickly update resume/social URLs -->
+    <script>
+        window.SITE_CONFIG = {
+            // Set your resume URL here (one place to update)
+            resumeUrl: "https://drive.google.com/file/d/1zgZSGMFEhXz6hY_o5fQtyTP24mz6ickP/view?usp=sharing",
+            resumeFileName: "Monesh_SWE_Intern_Resume.pdf",
+            // Optional central links
+            github: "https://github.com/moneshgomo",
+            linkedin: "https://www.linkedin.com/in/moneshgomo"
+        };
+    </script>
+</head>
+
+<body>
+
+    <!-- Loader -->
+    <!-- Loader -->
+    <div id="loader-wrapper">
+        <div class="loader">
+            <div class="loader-content">
+                <div class="loader-name">
+                    <span class="part-mon">mon</span>
+                    <span class="part-esh">esh</span>
+                    <span class="part-go">go</span>
+                    <span class="part-mo">mo</span>
+                </div>
+                <img src="https://skillicons.dev/icons?i=spring" class="loader-icon-step icon-spring" alt="Spring">
+                <img src="https://skillicons.dev/icons?i=docker" class="loader-icon-step icon-docker" alt="Docker">
+                <img src="https://skillicons.dev/icons?i=kubernetes" class="loader-icon-step icon-k8s" alt="K8s">
+            </div>
+        </div>
+    </div>
+
+    <!-- Skip link for keyboard users -->
+    <a class="skip-link" href="#home">Skip to main content</a>
+    <style>
+        /* Skip link visible when focused */
+        .skip-link {
+            position: absolute;
+            left: -9999px;
+            top: auto;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            z-index: 10000;
+        }
+
+        .skip-link:focus {
+            left: 10px;
+            top: 10px;
+            width: auto;
+            height: auto;
+            padding: 8px 12px;
+            background: var(--card-bg);
+            color: var(--text-primary);
+            border-radius: 6px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Better keyboard focus outlines */
+        :focus {
+            outline: none;
+        }
+
+        :focus-visible {
+            outline: 3px solid rgba(0, 255, 136, 0.25);
+            outline-offset: 3px;
+            border-radius: 6px;
+        }
+
+        /* Respect reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+
+            .matrix-char,
+            .terminal-cursor,
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+
+        /* Terminal-Style Home Section */
+        #home {
+            padding: 0;
+            height: 100vh;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #000000 0%, #0a0a0a 100%);
+        }
+
+        .terminal-cta {
+            margin-top: 30px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .terminal-icon-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: rgba(0, 243, 255, 0.1);
+            border: 1px solid var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .terminal-icon-btn:hover {
+            background: var(--primary);
+            color: #000;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 243, 255, 0.3);
+        }
+
+        /* Experience Marquee Styles */
+        .experience-marquee-wrapper {
+            overflow: hidden;
+            width: 100%;
+            position: relative;
+            padding: 20px 0;
+            mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+        }
+
+        .experience-marquee-content {
+            display: flex;
+            gap: 30px;
+            width: max-content;
+            /* Animation will be applied by JS to ensure correct width calculation */
+            animation: scroll 40s linear infinite;
+        }
+
+        .experience-marquee-content:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .experience-card {
+            /* Override previous styles for marquee */
+            flex: 0 0 350px;
+            cursor: pointer;
+        }
+
+        /* Modal Styles */
+        .experience-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 10001;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .experience-modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            background: rgba(20, 20, 35, 0.95);
+            border: 1px solid var(--primary);
+            border-radius: 20px;
+            width: 90%;
+            max-width: 700px;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 0;
+            box-shadow: 0 0 50px rgba(0, 243, 255, 0.2);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .experience-modal.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-header-section {
+            background: linear-gradient(to right, rgba(0, 243, 255, 0.1), transparent);
+            padding: 30px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-modal:hover {
+            color: var(--primary);
+        }
+
+        .modal-body {
+            padding: 30px;
+        }
+
+        .modal-title-text {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .modal-company {
+            color: var(--text-primary);
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .modal-date {
+            color: var(--secondary);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .modal-details p {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+
+        .modal-details strong {
+            color: var(--text-primary);
+        }
+
+        .modal-details ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .modal-details li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 10px;
+            color: var(--text-secondary);
+        }
+
+        .modal-details li:before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+    </style>
+    <!-- Glass Navigation Bar -->
+    <nav class="glass-nav">
+        <ul class="nav-links">
+            <li class="nav-item"><a href="#home" class="active" onclick="handleNavClick(event, 'home')"><i
+                        class="fas fa-home"></i><span>Home</span></a></li>
+            <li class="nav-item"><a href="#about" onclick="handleNavClick(event, 'about')"><i
+                        class="fas fa-user"></i><span>About</span></a></li>
+            <li class="nav-item"><a href="#skills" onclick="handleNavClick(event, 'skills')"><i
+                        class="fas fa-code"></i><span>Skills</span></a></li>
+            <li class="nav-item"><a href="#projects" onclick="handleNavClick(event, 'projects')"><i
+                        class="fas fa-project-diagram"></i><span>Projects</span></a></li>
+            <li class="nav-item"><a href="#experience" onclick="handleNavClick(event, 'experience')"><i
+                        class="fas fa-briefcase"></i><span>Experience</span></a></li>
+            <li class="nav-item"><a href="#achievements" onclick="handleNavClick(event, 'achievements')"><i
+                        class="fas fa-trophy"></i><span>Achievements</span></a></li>
+            <li class="nav-item"><a href="#contact" onclick="handleNavClick(event, 'contact')"><i
+                        class="fas fa-envelope"></i><span>Contact</span></a></li>
+        </ul>
+    </nav>
+
+
+
+    <!-- Terminal-Style Home Section -->
+    <section id="home"
+        style="position: relative; z-index: 1; background: linear-gradient(135deg, #000000 0%, #0a0a0a 100%);">
+        <!-- Floating Background Icons -->
+        <div class="floating-icons-container">
+            <!-- Programming -->
+            <img src="https://skillicons.dev/icons?i=docker" class="float-icon"
+                style="top: 85%; left: 40%; width: 70px; animation-delay: 1.5s;">
+            <img src="https://skillicons.dev/icons?i=git" class="float-icon"
+                style="top: 50%; left: 90%; width: 50px; animation-delay: 2.5s;">
+            <img src="https://skillicons.dev/icons?i=ubuntu" class="float-icon"
+                style="top: 40%; left: 5%; width: 55px; animation-delay: 3.5s;">
+            <img src="https://skillicons.dev/icons?i=java" class="float-icon" style="top: 10%; left: 10%; width: 60px;">
+            <img src="https://skillicons.dev/icons?i=py" class="float-icon"
+                style="top: 20%; left: 80%; width: 50px; animation-delay: 1s;">
+            <img src="https://skillicons.dev/icons?i=githubactions" class="float-icon"
+                style="top: 60%; left: 15%; width: 55px; animation-delay: 2s;">
+            <img src="https://skillicons.dev/icons?i=mysql" class="float-icon"
+                style="top: 75%; left: 75%; width: 45px; animation-delay: 3s;">
+            <img src="https://skillicons.dev/icons?i=go" class="float-icon"
+                style="top: 75%; left: 75%; width: 45px; animation-delay: 3s;">
+
+
+
+        </div>
+        <div class="matrix-bg" id="matrixBg"></div>
+
+        <!-- Social Sidebar (Left of Terminal) -->
+
+
+        <div class="terminal-container">
+            <div class="terminal-header">
+                <div class="terminal-buttons">
+                    <div class="terminal-button close"></div>
+                    <div class="terminal-button minimize"></div>
+                    <div class="terminal-button maximize"></div>
+                </div>
+                <div class="terminal-title">monesh@gomo: ~</div>
+            </div>
+            <div class="terminal-body">
+                <div class="terminal-line">
+                    <div class="terminal-prompt">monesh@gomo:~$</div>
+                    <div class="terminal-command">whoami</div>
+                </div>
+                <div class="terminal-line">
+                    <div class="terminal-output">
+                        <span class="terminal-name">Monesh D</span>
+                    </div>
+                </div>
+
+                <div class="terminal-line">
+                    <div class="terminal-prompt">monesh@gomo:~$</div>
+                    <div class="terminal-command">cat about.txt</div>
+                </div>
+                <div class="terminal-line">
+                    <div class="terminal-output">
+                        3rd Year IT Student | Backend Developer
+                    </div>
+                </div>
+
+                <div class="terminal-line">
+                    <div class="terminal-prompt">monesh@gomo:~$</div>
+                    <div class="terminal-command">cd resume</div>
+                </div>
+                <div class="terminal-line">
+                    <div class="terminal-prompt">monesh@gomo/resume:~$</div>
+                    <div class="terminal-command">ls</div>
+                </div>
+                <div class="terminal-line">
+                    <div class="terminal-output">
+                        Monesh_Resume.pdf
+                    </div>
+                </div>
+
+                <div class="terminal-cta">
+                    <a id="viewResumeBtn" data-config-key="resume" href="#" class="terminal-btn glow-btn"
+                        target="_blank" rel="noopener noreferrer" aria-label="Open resume in new tab">
+                        <i class="fas fa-file-alt me-2"></i>View Resume
+                    </a>
+
+                    <a href="https://github.com/moneshgomo" target="_blank" class="terminal-icon-btn"
+                        aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/moneshgomo" target="_blank" class="terminal-icon-btn"
+                        aria-label="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="mailto:moneshprogrammer@gmail.com" class="terminal-icon-btn" aria-label="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" style="position: relative; z-index: 1;">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">About Me</h2>
+
+            <div class="about-content">
+                <div class="" data-aos="fade-right">
+                    <img src="code.gif" alt="Coding GIF" style="width: 100%; max-width: 400px; border-radius: 10px;">
+                </div>
+
+                <div class="about-text" data-aos="fade-left">
+                    <h3>I'm a <span class="highlight-role">Backend Developer</span></h3>
+                    <p>and a 3rd year engineering student currently pursuing a B.Tech degree in Information
+                        technology.
+                        I'm passionate about building innovative solutions and excited to explore opportunities in
+                        the
+                        Backend engineering roles I am on track to graduate in 2027.</p>
+
+                    <div class="skills-list">
+                        <span class="skill-tag">Backend Engineering</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">CI/CD </span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">K8s</span>
+                        <span class="skill-tag">AI</span>
+                        <span class="skill-tag">Ubuntu</span>
+                    </div>
+
+                    <div class="mt-4">
+                        <a data-config-key="github" href="#" class="btn btn-primary me-2" target="_blank">
+                            <i class="fab fa-github me-2"></i>GitHub
+                        </a>
+                        <a data-config-key="linkedin" href="#" class="btn btn-outline-primary" target="_blank">
+                            <i class="fab fa-linkedin me-2"></i>LinkedIn
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Enhanced Services Section converted to Skills -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Skills</h2>
+
+            <div class="services-container">
+                <!-- Backend Development Card -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card-front">
+                        <div>
+                            <div class="service-icon">
+                                <i class="fas fa-server"></i>
+                            </div>
+                            <h3 class="service-title">Backend Development</h3>
+                            <p class="service-summary">
+                                Building robust and scalable server-side applications with modern technologies and best
+                                practices.
+                            </p>
+                        </div>
+                        <div class="service-tech">
+                            <span class="service-tech-tag">Java Spring Boot</span>
+                            <span class="service-tech-tag">PHP Laravel</span>
+                            <span class="service-tech-tag">Optimization</span>
+                        </div>
+                        <div class="service-hover-indicator">
+                            <i class="fas fa-arrow-up"></i>
+                        </div>
+                    </div>
+                    <div class="service-card-back">
+                        <h3 class="service-title">Backend Development</h3>
+                        <ul class="service-features">
+                            <li><strong>Java Spring Boot</strong> - Maven, Hibernate ORM</li>
+                            <li><strong>PHP Laravel</strong> - Composer, Eloquent ORM</li>
+                            <li><strong>Security</strong> - RBAC,JWT, OAuth2</li>
+                            <li><strong>Database </strong> - MySQL, Relational Modeling</li>
+                            <li><strong>Custom</strong> logics implementation</li>
+                            <li><strong>API Development</strong> - RESTful principles, Swagger</li>
+                            <li><strong>Containerization</strong> - Docker, Kubernetes</li>
+                            <li><strong>Cloud Services</strong> - Render, Firebase, Aiven , Localstack</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Programming Languages Card -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card-front">
+                        <div>
+                            <div class="service-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <h3 class="service-title">I code in</h3>
+                            <p class="service-summary">
+                                Strong in Java with the ability to adapt to different programming languages using strong
+                                fundamentals.
+                            </p>
+                        </div>
+                        <div class="service-tech">
+                            <span class="service-tech-tag">Java</span>
+                            <span class="service-tech-tag">Python</span>
+                            <span class="service-tech-tag">PHP</span>
+                        </div>
+                        <div class="service-hover-indicator">
+                            <i class="fas fa-arrow-up"></i>
+                        </div>
+                    </div>
+                    <div class="service-card-back">
+                        <h3 class="service-title">Programming Languages</h3>
+                        <ul class="service-features">
+                            <li><strong>Java</strong> </li>
+                            <li><strong>Python</strong></li>
+                            <li><strong>PHP</strong></li>
+                            <li><strong>YAML</strong> - Configuration files(CI/CD , Kubernetes)</li>
+                            <li><strong>Markdown</strong> - Documentation</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-card-front">
+                        <div>
+                            <div class="service-icon">
+                                <i class="fas fa-tools"></i>
+                            </div>
+                            <h3 class="service-title">Tools I Use</h3>
+                            <p class="service-summary">
+                                Modern development workflows and tools for efficient and collaborative software
+                                development.
+                            </p>
+                        </div>
+                        <div class="service-tech">
+                            <span class="service-tech-tag">Git</span>
+                            <span class="service-tech-tag">Docker</span>
+                            <span class="service-tech-tag">CI/CD</span>
+                            <span class="service-tech-tag">Kubernetes</span>
+                        </div>
+                        <div class="service-hover-indicator">
+                            <i class="fas fa-arrow-up"></i>
+                        </div>
+                    </div>
+                    <div class="service-card-back">
+                        <h3 class="service-title">Tools & Deployment</h3>
+                        <ul class="service-features">
+                            <li><strong>Version Control</strong> - Git, GitHub</li>
+                            <li><strong>API Client</strong> - Postman</li>
+                            <li><strong>Containerization</strong> - Docker</li>
+                            <li><strong>Container Orchestration</strong> - Kind ( Kubernetes in Docker )</li>
+                            <li><strong>Hosting</strong> - Firebase, Netlify, Render</li>
+                            <li><strong>CI CD</strong> - GitHub Action</li>
+                            <li><strong>IDE</strong> - IntelliJ IDEA, Cursor </li>
+                            <li><strong>Serverless</strong> - Zoho Catalyst</li>
+                            <li><strong>Documentation</strong> - Notion, Markdown</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Projects Section with Sliding Cards -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Projects</h2>
+
+            <div class="projects-container">
+                <!-- CI/CD Pipeline Project -->
+                <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-card-front">
+                        <div class="project-img">
+                            <img src="https://i.postimg.cc/KzKXS432/Chat-GPT-Image-Sep-29-2025-09-03-32-PM.png"
+                                alt="CI/CD Pipeline Automation">
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">CI/CD Pipeline</h3>
+                            <p class="project-summary">
+                                A CI/CD pipeline that automates builds with GitHub Actions, pushes images to Docker Hub,
+                                and deploys to Render.
+                            </p>
+                            <div class="project-tech">
+                                <span class="project-tech-tag">GitHub Actions</span>
+                                <span class="project-tech-tag">Docker</span>
+                                <span class="project-tech-tag">Render</span>
+                            </div>
+                        </div>
+                        <div class="project-hover-indicator">
+                            <i class="fas fa-arrow-up"></i>
+                        </div>
+                    </div>
+                    <div class="project-card-back">
+                        <h3 class="project-title">CI/CD Pipeline</h3>
+                        <div class="project-details">
+                            <p>A comprehensive CI/CD pipeline that streamlines the entire application lifecycle:</p>
+                            <ul class="project-features">
+                                <li>Automated build and test pipeline powered by GitHub Actions</li>
+                                <li>Docker-based containerization with optimized image creation</li>
+                                <li>Automatic image publishing to Docker Hub registry</li>
+                                <li>Seamless deployment workflow integrated with Render platform</li>
+                                <li>One click away from achieving full continuous deployment</li>
+                                <li>Supports environment-specific configuration and version control</li>
+                            </ul>
+
+                        </div>
+                        <div class="project-tech">
+                            <span class="project-tech-tag">GitHub Actions</span>
+                            <span class="project-tech-tag">Docker</span>
+                            <span class="project-tech-tag">Render</span>
+                            <span class="project-tech-tag">YAML</span>
+                            <span class="project-tech-tag">Automation</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/moneshgomo/GitHub-Action" class="project-link code"
+                                target="_blank">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                            <a href="https://dev16-ops.onrender.com" class="project-link demo" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dev16 Blog Project -->
+                <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="project-card-front">
+                        <div class="project-img">
+                            <img src="https://broscorp.net/wp-content/uploads/2022/11/back-end_developers-1024x621.png"
+                                alt="Dev16 Blog - Backend Development Project">
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">dev16-Blog</h3>
+                            <p class="project-summary">
+                                A personal blog platform built with modern web technologies to share my learning journey
+                                and projects.
+                            </p>
+                            <div class="project-tech">
+                                <span class="project-tech-tag">Spring Boot</span>
+                                <span class="project-tech-tag">Docker</span>
+                                <span class="project-tech-tag">MySQL</span>
+                            </div>
+                        </div>
+                        <div class="project-hover-indicator">
+                            <i class="fas fa-arrow-up"></i>
+                        </div>
+                    </div>
+                    <div class="project-card-back">
+                        <h3 class="project-title">dev16-Blog</h3>
+                        <div class="project-details">
+                            <p>A full-stack blog application showcasing modern development practices:</p>
+                            <ul class="project-features">
+                                <li>Spring Boot backend with RESTful APIs</li>
+                                <li>Docker containerization for easy deployment</li>
+                                <li>MySQL database with proper relational design</li>
+                                <li>Responsive frontend with HTML/CSS/JavaScript</li>
+                                <li>User authentication and authorization</li>
+                                <li>Content management system</li>
+                            </ul>
+                        </div>
+                        <div class="project-tech">
+                            <span class="project-tech-tag">Spring Boot</span>
+                            <span class="project-tech-tag">Docker</span>
+                            <span class="project-tech-tag">MySQL</span>
+                            <span class="project-tech-tag">HTML/CSS/JS</span>
+                            <span class="project-tech-tag">REST API</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://blog-1fcl.onrender.com" class="project-link demo" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Spring Shield Project -->
+                <div class="project-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="project-card-front">
+                        <div class="project-img">
+                            <img src="https://www.valuecoders.com/blog/wp-content/uploads/2023/03/Software-Security-1.jpg.webp"
+                                alt="Spring Shield - Security Testing Application">
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Spring Shield</h3>
+                            <p class="project-summary">
+                                A security-focused application exploring Spring Security features with authentication
+                                and authorization.
+                            </p>
+                            <div class="project-tech">
+                                <span class="project-tech-tag">Java</span>
+                                <span class="project-tech-tag">Spring Security</span>
+                                <span class="project-tech-tag">RBAC</span>
+                            </div>
+                        </div>
+                        <div class="project-hover-indicator">
+                            <i class="fas fa-arrow-up"></i>
+                        </div>
+                    </div>
+                    <div class="project-card-back">
+                        <h3 class="project-title">Spring Shield</h3>
+                        <div class="project-details">
+                            <p>A security-focused micro-project exploring Spring Security capabilities:</p>
+                            <ul class="project-features">
+                                <li>Comprehensive authentication system</li>
+                                <li>Role-Based Access Control (RBAC)</li>
+                                <li>Custom security configurations</li>
+                                <li>Security testing and validation</li>
+                            </ul>
+                        </div>
+                        <div class="project-tech">
+                            <span class="project-tech-tag">Java</span>
+                            <span class="project-tech-tag">Spring Security</span>
+                            <span class="project-tech-tag">RBAC</span>
+                            <span class="project-tech-tag">Authentication</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://youtu.be/7OLQLpiSuDQ?si=vRh6jJ2JeNEPaIDZ" class="project-link demo"
+                                target="_blank">
+                                <i class="fab fa-youtube"></i> Demo Video
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-5" data-aos="fade-up">
+                <a href="https://www.youtube.com/channel/UC-g2P8mrkWItWlfuqX3IMJw" class="btn btn-primary"
+                    target="_blank">
+                    <i class="fab fa-youtube me-2"></i> View More Projects
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Experience</h2>
+
+            <div class="experience-marquee-wrapper">
+                <div class="experience-marquee-content" id="experienceMarquee">
+                    <!-- Cards will be cloned here by JS -->
+
+
+                    <!-- Backend Developer @ DOI Softwares -->
+                    <div class="experience-card">
+                        <div class="experience-card-front">
+                            <div>
+                                <div class="card-number">01</div>
+                                <div class="experience-date">Sep 2025 ( One Month )</div>
+                                <h3 class="experience-title">Backend Developer</h3>
+                                <div class="experience-company">Freelancer</div>
+                                <p class="experience-summary">
+                                    Contributing as a Backend Developer & Co-Architect, sharing responsibilities with
+                                    the
+                                    team lead to design and deliver scalable, secure, and production-ready features.
+                                </p>
+                            </div>
+                            <div class="experience-tech">
+                                <span class="experience-tech-tag">Backend</span>
+                                <span class="experience-tech-tag">Security</span>
+                                <span class="experience-tech-tag">Cloud Native Design</span>
+                            </div>
+
+                        </div>
+                        <div class="experience-card-back" style="display: none;">
+                            <div class="data-details">
+                                <p><strong>Responsibilities:</strong></p>
+                                <ul>
+                                    <li>System Design & Architecture</li>
+                                    <li>Backend Development</li>
+                                    <li>Application Security </li>
+                                    <li>Cloud native design & Real-Time Messaging</li>
+                                    <li>Collaboration in reviews & discussions</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Junior Backend Developer @ DOI Softwares -->
+                    <div class="experience-card">
+                        <div class="experience-card-front">
+                            <div>
+                                <div class="card-number">02</div>
+                                <div class="experience-date">Jun 2025 – August 2025</div>
+                                <h3 class="experience-title">Junior Backend Developer</h3>
+                                <div class="experience-company">Freelancer</div>
+                                <p class="experience-summary">
+                                    Previously worked in a freelancing team environment, contributing to 5 client
+                                    projects.
+                                    Focused on designing RESTful APIs and delivering features aligned with business
+                                    workflows.
+                                </p>
+                            </div>
+                            <div class="experience-tech">
+                                <span class="experience-tech-tag">REST APIs</span>
+                                <span class="experience-tech-tag">Bug Fixing</span>
+                                <span class="experience-tech-tag">Clean UI</span>
+                            </div>
+
+                        </div>
+                        <div class="experience-card-back" style="display: none;">
+                            <div class="data-details">
+                                <p><strong>Key Contributions:</strong></p>
+                                <ul>
+                                    <li>Designed RESTful APIs for 5+ client projects</li>
+                                    <li>Enhanced admin panels and integrated data models</li>
+                                    <li>Delivered features aligned with business workflows</li>
+                                    <li>Gained experience in bug fixing and scalability</li>
+                                    <li>Efficient project delivery within tight timelines</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Backend Developer @ HackHazards '25 -->
+                    <div class="experience-card">
+                        <div class="experience-card-front">
+                            <div>
+                                <div class="card-number">03</div>
+                                <div class="experience-date">2025</div>
+                                <h3 class="experience-title">Backend Developer</h3>
+                                <div class="experience-company">HackHazards '25 ( Hackathon )</div>
+                                <p class="experience-summary">
+                                    Built real-time backend with LLMs, Flask, Fluvio, WebSockets, and web3. Implemented
+                                    forecasting with Prophet + LLM and migrated from Windows to Linux.
+                                </p>
+                            </div>
+                            <div class="experience-tech">
+                                <span class="experience-tech-tag">Python</span>
+                                <span class="experience-tech-tag">Data Streaming</span>
+                                <span class="experience-tech-tag">WebSockets</span>
+                            </div>
+
+                        </div>
+                        <div class="experience-card-back" style="display: none;">
+                            <div class="data-details">
+                                <p><strong>Technologies Used:</strong></p>
+                                <ul>
+                                    <li>Python, Laravel, React, MySQL, Microservices</li>
+                                    <li>Fluvio ( Data Streaming ), Web3, WebSockets</li>
+                                    <li>Forecasting with Prophet </li>
+                                    <li>Linux migration from Windows</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Scroll Controls -->
+            <div class="experience-scroll-controls">
+                <button class="scroll-btn left" onclick="scrollExperience('left')"><i
+                        class="fas fa-chevron-left"></i></button>
+                <button class="scroll-btn right" onclick="scrollExperience('right')"><i
+                        class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Achievements</h2>
+            <div class="row g-4">
+                <!-- Hackathon -->
+                <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="achievement-card">
+                        <div class="achievement-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h3>Hackathon Winner</h3>
+                        <p>Won an 8-hour continuous hackathon focused on real-time problem solving. Demonstrated quick
+                            thinking and team collaboration under pressure.</p>
+                    </div>
+                </div>
+                <!-- Freelancing -->
+                <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="achievement-card">
+                        <div class="achievement-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <h3>5+ Projects Delivered</h3>
+                        <p>Successfully delivered 5+ freelance projects with a focus on RESTful APIs and Client
+                            satisfied site design and functionality.
+                        </p>
+                    </div>
+                </div>
+                <!-- Certifications -->
+                <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="achievement-card">
+                        <div class="achievement-icon">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        </div>
+                        <h3>Java Mentor</h3>
+                        <p>Mentored peers in Java fundamentals, helping them master core concepts and clarifying doubts
+                            to build a strong programming foundation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <style>
+            .achievement-card {
+                background: rgba(255, 255, 255, 0.05);
+                /* Glass effect */
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                border-radius: 15px;
+                padding: 30px;
+                text-align: center;
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+                height: 100%;
+            }
+
+            .achievement-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 10px 30px rgba(0, 243, 255, 0.2);
+                border-color: var(--primary);
+            }
+
+            .achievement-icon {
+                font-size: 2.5rem;
+                color: var(--primary);
+                margin-bottom: 20px;
+            }
+
+            .achievement-card h3 {
+                color: var(--text-primary);
+                font-size: 1.5rem;
+                margin-bottom: 15px;
+            }
+
+            .achievement-card p {
+                color: var(--text-secondary);
+                font-size: 1rem;
+            }
+        </style>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Get In Touch</h2>
+
+            <div class="contact-container">
+                <div class="contact-info" data-aos="fade-right">
+                    <div class="contact-card">
+                        <h3 class="contact-title">Contact Info & Links </h3>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Email</h4>
+                                <p>moneshprogrammer@gmail.com</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fab fa-linkedin"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>LinkedIn</h4>
+                                <p>linkedin.com/in/moneshgomo</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fab fa-github"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>GitHub</h4>
+                                <p>github.com/moneshgomo</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fab fa-docker"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Docker Hub</h4>
+                                <p>hub.docker.com/u/moneshgomo</p>
+                            </div>
+                        </div>
+
+                        <div class="social-links">
+                            <a data-config-key="linkedin" href="#" class="social-link" target="_blank">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a data-config-key="github" href="#" class="social-link" target="_blank">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://blog-1fcl.onrender.com" class="social-link" target="_blank"
+                                rel="noopener noreferrer">
+                                <i class="fas fa-blog"></i>
+                            </a>
+                            <a href="https://www.youtube.com/@Moneshgomo" class="social-link" target="_blank"
+                                rel="noopener noreferrer">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                            <a href="https://hub.docker.com/u/moneshgomo" class="social-link" target="_blank"
+                                rel="noopener noreferrer">
+                                <i class="fab fa-docker"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p class="footer-text">
+                <br>Keep learning <i class="fas fa-heart" style="color: var(--secondary);"></i>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS (Animate On Scroll) -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Custom JS -->
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Navigation circles functionality
+
+        // Navigation circles functionality
+        // Navigation functionality
+        function handleNavClick(event, sectionId) {
+            event.preventDefault();
+            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Update active navigation item on scroll
+        window.addEventListener('scroll', function () {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-item a');
+
+            let currentSection = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                // Adjust offset for fixed navbar
+                if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                // Get href attribute and remove '#' to match id
+                const href = link.getAttribute('href').substring(1);
+                if (href === currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Matrix background effect (more efficient + respects reduced-motion)
+        function createMatrixEffect() {
+            const matrixBg = document.getElementById('matrixBg');
+            if (!matrixBg) return;
+
+            // If user prefers reduced motion, skip heavy animation
+            const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            matrixBg.innerHTML = '';
+
+            if (prefersReduced) {
+                matrixBg.style.opacity = '0.05';
+                return;
+            }
+
+            const chars = '01';
+            // Scale char count to viewport width for consistent density
+            const charCount = Math.max(30, Math.floor(window.innerWidth / 12));
+
+            for (let i = 0; i < charCount; i++) {
+                const char = document.createElement('div');
+                char.className = 'matrix-char';
+                char.textContent = chars.charAt(Math.floor(Math.random() * chars.length));
+                // Use vw so it scales horizontally; small offsets keep it inside
+                char.style.left = Math.random() * 95 + 'vw';
+                char.style.top = Math.random() * -50 + 'vh';
+                char.style.opacity = 0.8 - Math.random() * 0.6;
+                const dur = (Math.random() * 10 + 6).toFixed(2);
+                char.style.animationDuration = dur + 's';
+                char.style.animationDelay = (Math.random() * 5).toFixed(2) + 's';
+                char.style.fontSize = (10 + Math.random() * 16) + 'px';
+                matrixBg.appendChild(char);
+            }
+        }
+
+        // Apply SITE_CONFIG values to anchors marked with data-config-key
+        function applySiteConfigLinks() {
+            if (!window.SITE_CONFIG) return;
+
+            // Map keys to selectors
+            const mapping = {
+                resume: 'viewResumeBtn',
+                github: 'a[data-config-key="github"]',
+                linkedin: 'a[data-config-key="linkedin"]'
+            };
+
+            // Resume button (single id)
+            const resumeBtn = document.getElementById(mapping.resume);
+            if (resumeBtn && window.SITE_CONFIG.resumeUrl) {
+                resumeBtn.href = window.SITE_CONFIG.resumeUrl;
+                resumeBtn.target = '_blank';
+                resumeBtn.rel = 'noopener noreferrer';
+                resumeBtn.setAttribute('aria-label', 'Open resume in new tab');
+            }
+
+            // Generic anchors (data-config-key)
+            document.querySelectorAll('a[data-config-key]').forEach(a => {
+                const key = a.getAttribute('data-config-key');
+                if (key && window.SITE_CONFIG[key]) {
+                    a.href = window.SITE_CONFIG[key];
+                    a.target = '_blank';
+                    a.rel = 'noopener noreferrer';
+                }
+            });
+
+            // Ensure external links are safe
+            document.querySelectorAll('a[target="_blank"]').forEach(a => {
+                if (!a.rel) a.rel = 'noopener noreferrer';
+            });
+        }
+
+        // Debounced resize handler to re-create matrix effect
+        let matrixResizeTimer = null;
+        window.addEventListener('resize', () => {
+            clearTimeout(matrixResizeTimer);
+            matrixResizeTimer = setTimeout(() => createMatrixEffect(), 200);
+        });
+
+        // Initialize on load
+        applySiteConfigLinks();
+        createMatrixEffect();
+
+        // Loader - Duration adjusted for faster animation sequence
+        // Hide navbar initially
+        var nav = document.querySelector('.glass-nav');
+        if (nav) nav.style.opacity = '0';
+
+        // 1.2s (name) + 0.8s (spring) + 0.8s (docker) + 0.8s (k8s appears) = ~3.6s total
+        setTimeout(function () {
+            var loader = document.getElementById('loader-wrapper');
+            if (loader) {
+                loader.style.opacity = '0';
+                setTimeout(function () {
+                    loader.style.display = 'none';
+                    // Show navbar after loader
+                    if (nav) nav.style.opacity = '1';
+                }, 500);
+            }
+        }, 3600);
+    </script>
+
+    <style>
+        /* Marquee Styles */
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            width: 100%;
+            padding: 20px 0;
+            box-sizing: border-box;
+            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        }
+
+        .marquee-content {
+            display: inline-flex;
+            /* Changed to flex for better row layout */
+            gap: 20px;
+            /* Consistent gap */
+            padding-right: 20px;
+            /* animation: marquee 15s linear infinite alternate; REMOVED */
+            transition: transform 0.3s ease;
+            /* For smooth manual scroll if needed */
+        }
+
+        /* Ensure the container is scrollable via JS (overflow hidden visually, controlled by buttons) */
+        .experience-marquee-wrapper {
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            /* Hide scrollbar for cleaner look */
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .experience-marquee-wrapper::-webkit-scrollbar {
+            display: none;
+        }
+
+        .marquee-content:hover {
+            /* No pause needed as animation is gone */
+        }
+
+        .experience-card {
+            display: inline-block;
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 20px 25px;
+            margin: 0 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: left;
+            vertical-align: top;
+            width: 350px;
+            /* Increased width */
+            min-height: 300px;
+            /* Added min-height for consistency */
+            box-sizing: border-box;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            white-space: normal;
+            /* Reset whitespace so text wraps */
+        }
+
+        .experience-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .experience-card h4 {
+            margin-top: 0;
+            margin-bottom: 5px;
+            color: var(--primary);
+            font-size: 1.1em;
+        }
+
+        .experience-card p {
+            margin-bottom: 5px;
+            font-size: 0.9em;
+            color: var(--text-color-light);
+        }
+
+        .experience-card .experience-date {
+            font-size: 0.8em;
+            color: var(--text-color-lighter);
+        }
+
+        .experience-card .data-details {
+            display: none;
+            /* Hide details in the card, show in modal */
+        }
+
+        .card-number {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            /* Blue Background */
+            color: #ffffff;
+            /* White Text */
+            font-size: 1.5rem;
+            font-weight: 800;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            /* Circle */
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+
+        .experience-card:hover .card-number {
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: 0 0 25px var(--primary);
+        }
+
+        /* Hover Indicator Styles */
+        .experience-hover-indicator {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: var(--primary);
+            opacity: 0;
+            /* Hidden by default */
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .experience-card:hover .experience-hover-indicator {
+            opacity: 1;
+            /* Show on hover */
+            transform: translateY(0);
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(10px);
+            }
+
+            100% {
+                transform: translateX(calc(-100% + 100vw - 20px));
+            }
+        }
+
+        /* Modal Styles */
+        .experience-modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1000;
+            /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgba(0, 0, 0, 0.7);
+            /* Black w/ opacity */
+            backdrop-filter: blur(5px);
+            /* Frosted glass effect */
+            -webkit-backdrop-filter: blur(5px);
+            /* Safari support */
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .experience-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background-color: var(--card-bg);
+            margin: auto;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+            width: 90%;
+            max-width: 700px;
+            position: relative;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            border: 1px solid var(--border-color);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .experience-modal.active .modal-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .modal-header-section {
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .close-modal {
+            color: var(--text-color-light);
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            font-size: 28px;
+            font-weight: bold;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            line-height: 1;
+        }
+
+        .close-modal:hover,
+        .close-modal:focus {
+            color: var(--primary);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal-title-text {
+            margin: 0;
+            color: var(--primary);
+            font-size: 1.8em;
+        }
+
+        .modal-company {
+            color: var(--text-color);
+            font-size: 1.1em;
+            margin-top: 5px;
+        }
+
+        .modal-date {
+            color: var(--text-color-light);
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        .modal-body {
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .modal-body ul {
+            padding-left: 20px;
+            margin-top: 15px;
+        }
+
+        .modal-body li {
+            margin-bottom: 8px;
+        }
+
+        /* Responsive adjustments for modal */
+        @media (max-width: 768px) {
+            .modal-content {
+                width: 95%;
+                padding: 20px;
+            }
+
+            .modal-title-text {
+                font-size: 1.5em;
+            }
+
+            .modal-company {
+                font-size: 1em;
+            }
+        }
+
+        /* Scroll Buttons */
+        .experience-scroll-controls {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .scroll-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .scroll-btn:hover {
+            background: var(--primary);
+            color: #000;
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
+        }
+    </style>
+
+    <!-- Experience Modal Structure -->
+    <div id="experienceModal" class="experience-modal">
+        <div class="modal-content">
+            <div class="modal-header-section">
+                <button class="close-modal" onclick="closeExperienceModal()">&times;</button>
+                <h3 class="modal-title-text" id="modalTitle">Role Title</h3>
+                <div class="modal-company" id="modalCompany">Company Name</div>
+                <div class="modal-date" id="modalDate">Date Range</div>
+            </div>
+            <div class="modal-body">
+                <div class="modal-details" id="modalDetails">
+                    <!-- Dynamic details loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project Modal Structure -->
+    <div id="projectModal" class="experience-modal">
+        <div class="modal-content">
+            <div class="modal-header-section">
+                <button class="close-modal" onclick="closeProjectModal()">&times;</button>
+                <h3 class="modal-title-text" id="projectModalTitle">Project Title</h3>
+                <div class="modal-company" id="projectModalSummary">Summary</div>
+            </div>
+            <div class="modal-body">
+                <div id="projectModalContent"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            initExperienceMarquee();
+            initProjectModals();
+            initSkillModals();
+        });
+
+        function initExperienceMarquee() {
+            const marqueeContent = document.getElementById('experienceMarquee');
+            if (!marqueeContent) return;
+
+            // Add click listeners to items
+            const allItems = marqueeContent.querySelectorAll('.experience-card');
+            allItems.forEach(card => {
+                card.addEventListener('click', () => {
+                    openExperienceModal(card);
+                });
+            });
+        }
+
+        // Manual Scroll Logic
+        function scrollExperience(direction) {
+            const container = document.getElementById('experienceMarquee');
+            const wrapper = document.querySelector('.experience-marquee-wrapper');
+
+            // Stop CSS animation
+            container.style.animation = 'none';
+            wrapper.style.overflowX = 'auto'; // Enable manual scroll
+            wrapper.style.scrollBehavior = 'smooth';
+
+            // Scroll amount
+            const scrollAmount = 350 + 30; // Card width + gap
+
+            if (direction === 'left') {
+                wrapper.scrollLeft -= scrollAmount;
+            } else {
+                wrapper.scrollLeft += scrollAmount;
+            }
+        }
+
+        function initProjectModals() {
+            const projectCards = document.querySelectorAll('.project-card');
+            projectCards.forEach(card => {
+                // Remove default hover effect css if needed, or keep it. 
+                // User wants popup functionality.
+                card.addEventListener('click', () => {
+                    openProjectModal(card);
+                });
+                card.style.cursor = 'pointer';
+            });
+        }
+
+        function initSkillModals() {
+            const serviceCards = document.querySelectorAll('.service-card');
+            serviceCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    openSkillModal(card);
+                });
+            });
+        }
+
+        function openSkillModal(card) {
+            // Reusing projectModal for skills as structure is similar
+            const modal = document.getElementById('projectModal');
+            const nav = document.querySelector('.glass-nav');
+
+            const title = card.querySelector('.service-title').textContent;
+            const summary = card.querySelector('.service-summary').textContent;
+            const techHTML = card.querySelector('.service-tech').innerHTML;
+            // Get features from back card
+            const detailsHTML = card.querySelector('.service-features').outerHTML;
+
+            // Populate
+            document.getElementById('projectModalTitle').textContent = title;
+            document.getElementById('projectModalSummary').textContent = summary;
+
+            const content = `
+                <div style="margin-bottom: 25px;">
+                    <h4 style="color: var(--primary); margin-bottom: 15px; font-size: 1.1em;">Tech Stack</h4>
+                    <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                        ${techHTML}
+                    </div>
+                </div>
+                <div style="margin-bottom: 25px; color: var(--text-secondary);">
+                    <h4 style="color: var(--primary); margin-bottom: 15px; font-size: 1.1em;">Key Features</h4>
+                    ${detailsHTML}
+                </div>
+            `;
+            document.getElementById('projectModalContent').innerHTML = content;
+
+            modal.classList.add('active');
+            if (nav) nav.style.opacity = '0';
+            if (nav) nav.style.pointerEvents = 'none';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function openProjectModal(card) {
+            const modal = document.getElementById('projectModal');
+            const nav = document.querySelector('.glass-nav');
+
+            const title = card.querySelector('.project-title').textContent;
+            const summary = card.querySelector('.project-summary').textContent;
+            const techHTML = card.querySelector('.project-tech').innerHTML;
+            const detailsHTML = card.querySelector('.project-details').innerHTML;
+
+            // Get links if present in back card
+            let linksHTML = '';
+            const linksDiv = card.querySelector('.project-links');
+            if (linksDiv) linksHTML = linksDiv.outerHTML;
+
+            // Populate
+            document.getElementById('projectModalTitle').textContent = title;
+            document.getElementById('projectModalSummary').textContent = summary;
+
+            const content = `
+                <div style="margin-bottom: 25px;">
+                    <h4 style="color: var(--primary); margin-bottom: 15px; font-size: 1.1em;">Tech Stack</h4>
+                    <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                        ${techHTML}
+                    </div>
+                </div>
+                <div style="margin-bottom: 25px; color: var(--text-secondary);">
+                    ${detailsHTML}
+                </div>
+                <div style="border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 25px;">
+                     ${linksHTML}
+                </div>
+            `;
+            document.getElementById('projectModalContent').innerHTML = content;
+
+            modal.classList.add('active');
+            if (nav) nav.style.opacity = '0';
+            if (nav) nav.style.pointerEvents = 'none';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeProjectModal() {
+            const modal = document.getElementById('projectModal');
+            const nav = document.querySelector('.glass-nav');
+
+            modal.classList.remove('active');
+            if (nav) nav.style.opacity = '1';
+            if (nav) nav.style.pointerEvents = 'auto';
+            document.body.style.overflow = '';
+        }
+
+        // Close project modal on outside click
+        document.getElementById('projectModal').addEventListener('click', (e) => {
+            if (e.target.id === 'projectModal') {
+                closeProjectModal();
+            }
+        });
+
+        function openExperienceModal(card) {
+            const modal = document.getElementById('experienceModal');
+            const nav = document.querySelector('.glass-nav'); // Select the navbar
+
+            // Extract data
+            const title = card.querySelector('.experience-title').textContent;
+            const company = card.querySelector('.experience-company').textContent;
+            const date = card.querySelector('.experience-date').textContent;
+            const summary = card.querySelector('.experience-summary').textContent;
+            // Get Tech Stack HTML (to preserve spans)
+            const techHTML = card.querySelector('.experience-tech').innerHTML;
+
+            // The details are stored in the hidden .experience-card-back
+            const detailsHTML = card.querySelector('.data-details').innerHTML;
+
+            // Populate Modal
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalCompany').textContent = company;
+            document.getElementById('modalDate').textContent = date;
+
+            // Combine all data for the modal body
+            let combinedContent = `
+                <div style="margin-bottom: 20px; font-size: 1.1em; color: var(--text-color);">
+                    ${summary}
+                </div>
+                <div style="margin-bottom: 25px;">
+                    <h4 style="color: var(--primary); margin-bottom: 15px; font-size: 1.1em;">Tech Stack</h4>
+                    <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                        ${techHTML}
+                    </div>
+                </div>
+                <div style="border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 25px;">
+                    ${detailsHTML}
+                </div>
+            `;
+
+            document.getElementById('modalDetails').innerHTML = combinedContent;
+
+            // Show Modal and hide Navbar
+            modal.classList.add('active');
+            if (nav) nav.style.opacity = '0'; // Hide navbar
+            if (nav) nav.style.pointerEvents = 'none'; // Disable interactions
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeExperienceModal() {
+            const modal = document.getElementById('experienceModal');
+            const nav = document.querySelector('.glass-nav'); // Select the navbar
+
+            modal.classList.remove('active');
+            if (nav) nav.style.opacity = '1'; // Show navbar
+            if (nav) nav.style.pointerEvents = 'auto'; // Enable interactions
+            document.body.style.overflow = ''; // Restore scrolling
+        }
+
+        // Close when clicking outside content
+        document.getElementById('experienceModal').addEventListener('click', (e) => {
+            if (e.target.id === 'experienceModal') {
+                closeExperienceModal();
+            }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && document.getElementById('experienceModal').classList.contains('active')) {
+                closeExperienceModal();
+            }
+        });
+    </script>
+
+
+</body>
+
+</html>
+```
