@@ -29,5 +29,5 @@ jobs:
       - name: Terraform Plan
         run: terraform plan
 
-      - name: Terraform Apply
+      - name: Terraform Apply  ( testing dont need to worry about it )
         run: terraform apply -auto-approve
