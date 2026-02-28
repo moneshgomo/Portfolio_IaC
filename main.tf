@@ -67,6 +67,8 @@ resource "aws_s3_object" "index" {
   key          = "index.html"
   source       = "./website/index.html"
   content_type = "text/html"
+  etag         = filemd5("./website/index.html")  ← ADD THIS LINE
+
 }
 
 
@@ -75,4 +77,6 @@ resource "aws_s3_object" "error" {
   key          = "error.html"
   source       = "./website/error.html"
   content_type = "text/html"
+  etag         = filemd5("./website/error.html")  ← ADD THIS LINE
+
 }
